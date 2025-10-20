@@ -24,14 +24,14 @@ A powerful command-line tool for downloading high-quality videos and audio from 
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/youtube-downloader.git
-cd youtube-downloader
+git clone https://github.com/yourusername/video-downloader.git
+cd video-downloader
 ```
 
 #### 2. Create Conda Environment
 
 ```bash
-conda env create -f environment.yml
+conda env create -f video_downloader.yml
 conda activate video_downloader
 ```
 
@@ -41,50 +41,10 @@ conda activate video_downloader
 conda install -c conda-forge ffmpeg
 ```
 
-### Method 2: Using pip
-
-#### 1. Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/youtube-downloader.git
-cd youtube-downloader
-```
-
-#### 2. Install Required Packages
-
-```bash
-pip install -r requirements.txt
-```
-
-#### 3. Install FFmpeg
-
-FFmpeg is essential for audio conversion and video processing.
-
-**If using Conda** (already installed in step 2):
-```bash
-# FFmpeg is included in the environment.yml
-```
-
-**If using pip or system-wide installation**:
-
-#### Ubuntu/Debian
-```bash
-sudo apt update
-sudo apt install ffmpeg
-```
-
-#### macOS
-```bash
-brew install ffmpeg
-```
-
-#### Windows
-Download FFmpeg from the [official website](https://ffmpeg.org/download.html) and add it to your system PATH.
-
 ### 4. Verify Installation
 
 ```bash
-python youtube_downloader.py --help
+python video_downloader.py --help
 ```
 
 If the help message appears, you're ready to start downloading!
@@ -96,31 +56,31 @@ If the help message appears, you're ready to start downloading!
 #### Download a Video (Default: 1080p, MP4 format)
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID"
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
 #### Download with Specific Quality
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -q 720
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -q 720
 ```
 
 #### Download Audio Only (MP3 format)
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --audio-only -f mp3
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --audio-only -f mp3
 ```
 
 #### Download High-Quality Audio
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --audio-only -f mp3 --audio-quality 320
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --audio-only -f mp3 --audio-quality 320
 ```
 
 #### Specify Output Directory
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -o ./downloads
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -o ./downloads
 ```
 
 ### Advanced Usage
@@ -128,7 +88,7 @@ python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -o ./dow
 #### Download a Video Segment
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --start-time 00:01:30 --end-time 00:05:45
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --start-time 00:01:30 --end-time 00:05:45
 ```
 
 #### Batch Download from CSV File
@@ -142,17 +102,17 @@ https://www.youtube.com/watch?v=VIDEO_ID3
 
 2. Execute batch download:
 ```bash
-python youtube_downloader.py --file urls.csv -o ./downloads
+python video_downloader.py --file urls.csv -o ./downloads
 ```
 
 #### Download in Various Formats
 
 ```bash
 # Download video in WebM format
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -f webm
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -f webm
 
 # Download audio in M4A format
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --audio-only -f m4a
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --audio-only -f m4a
 ```
 
 ## Command-Line Options
@@ -160,7 +120,7 @@ python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" --audio-
 ### Basic Syntax
 
 ```
-usage: youtube_downloader.py [-h] [-q {1080,720,480,360}] [-f FORMAT] 
+usage: video_downloader.py [-h] [-q {1080,720,480,360}] [-f FORMAT] 
                               [-o OUTPUT] [--audio-only] 
                               [--audio-quality AUDIO_QUALITY]
                               [--start-time START_TIME] [--end-time END_TIME]
@@ -221,7 +181,7 @@ Path to CSV file containing YouTube URLs
 ### Example 1: Download Standard Quality Video
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" -q 720 -o ./my_videos
+python video_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" -q 720 -o ./my_videos
 ```
 
 ### Example 2: Extract Audio from Playlist
@@ -235,13 +195,13 @@ https://www.youtube.com/watch?v=VIDEO_ID3
 
 2. Execute:
 ```bash
-python youtube_downloader.py --file playlist.csv --audio-only -f mp3 --audio-quality 320 -o ./music
+python video_downloader.py --file playlist.csv --audio-only -f mp3 --audio-quality 320 -o ./music
 ```
 
 ### Example 3: Download Lecture Segment
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=LECTURE_ID" \
+python video_downloader.py "https://www.youtube.com/watch?v=LECTURE_ID" \
     --start-time 00:10:00 \
     --end-time 00:30:00 \
     -q 480 \
@@ -251,7 +211,7 @@ python youtube_downloader.py "https://www.youtube.com/watch?v=LECTURE_ID" \
 ### Example 4: Quick Low-Quality Download
 
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -q 360 -o ./quick_downloads
+python video_downloader.py "https://www.youtube.com/watch?v=VIDEO_ID" -q 360 -o ./quick_downloads
 ```
 
 ## Output File Format
